@@ -1,0 +1,39 @@
+<h4>Listado</h4>
+<ul class="list-group">
+    @for(character of characterList; 
+    track character; 
+    let i = $index;
+    let isFirst = $first;
+    let isLast = $last){
+        <li class="list-group-item d-flex justify-content-between align-items-center" 
+        [ngClass]="{'list-group-item-success': isFirst,
+        'list-group-item-primary': isLast
+
+        }">
+            <div>
+                <span>{{i + 1}} - </span>
+                <span>{{character.name}}</span>
+                 - <strong>Power: </strong> 
+                 <span>{{character.power}}</span>
+            </div>             
+            <button
+                (click)="emitIndex(character.id!)"
+                type="button"
+                name=""
+                id=""
+                class="btn btn-danger"
+            >
+                X
+            </button>
+             
+             
+
+        </li>
+    } @empty{
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-warning">
+                No hay ningún personaje disponible
+            </li>
+        </ul>
+    }
+</ul>
